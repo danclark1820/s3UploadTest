@@ -11,12 +11,18 @@ import java.io.File
 
 object Application extends Controller {
 
-//  case class ImageFile(name: String)
-
-//  val imageForm = Form(
-//    mapping(
-//      "file" -> nonEmptyText
-//    )(ImageFile.apply)(Iamgefile.unapply)
+  def upload = Action(parse.multipartFormData) { request =>
+    request.body.file("picture").map { picture =>
+      val filename = picture.filename
+      val contentType = picture.contentType
+      picture.ref.moveTo(new File("/tmp/picture"))
+      Ok("File uploaded")
+    }.getOrElse {
+      Redirect(routes.Application.index).flashing(
+        "error" -> "Missing file"
+      )
+    }
+  }
 
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
