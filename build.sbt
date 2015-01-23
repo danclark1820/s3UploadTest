@@ -6,9 +6,7 @@ libraryDependencies ++= Seq(
   jdbc,
   anorm,
   cache,
-  "nl.rhinofly" %% "play-s3" % "4.0.0"
+  "com.amazonaws" % "aws-java-sdk" % "1.8.9.1"
 )
-
-resolvers += "Rhinofly Internal Repository" at "http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local"
 
 play.Project.playScalaSettings

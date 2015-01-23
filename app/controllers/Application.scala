@@ -9,6 +9,8 @@ import play.api.data.Forms._
 import java.nio.file.Files
 import java.io.File
 
+import play.api.Logger
+
 object Application extends Controller {
 
   def upload = Action(parse.multipartFormData) { request =>
