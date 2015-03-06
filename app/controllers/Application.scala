@@ -15,8 +15,8 @@ object Application extends Controller {
     request.body.file("picture").map { picture =>
       val filename = picture.filename
       val contentType = picture.contentType
-      picture.ref.moveTo(new File("/tmp/picture"))
-      Ok("File uploaded")
+      picture.ref.moveTo(new File(s"/tmp/$filename"))
+      Ok(s"File $filename uploaded")
     }.getOrElse {
       Redirect(routes.Application.index).flashing(
         "error" -> "Missing file"
