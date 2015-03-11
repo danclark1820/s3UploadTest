@@ -5,7 +5,8 @@ version := "1.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   jdbc,
   anorm,
-  cache
-)     
+  cache,
+  "com.github.seratch" %% "awscala" % "0.4.+"
+)
 
 play.Project.playScalaSettings
