@@ -19,9 +19,9 @@ object Application extends Controller {
   implicit val s3 = S3()
 
   val uuid = java.util.UUID.randomUUID.toString
-  val bucket: Bucket = s3.createBucket(s"play-test-$uuid")
-  //val buckets: Seq[Bucket] = s3.buckets
-  //val bucket = buckets(0)
+  //val bucket: Bucket = s3.createBucket(s"play-test-$uuid")
+  val buckets: Seq[Bucket] = s3.buckets
+  val bucket = buckets(3)
 
 
   def upload = Action(parse.multipartFormData) { request =>
